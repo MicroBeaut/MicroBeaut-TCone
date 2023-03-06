@@ -1,0 +1,9 @@
+{
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "inttypes.h": "c",
+    "pgmspace.h": "c",
+    "interrupt.h": "c",
+    "stdio.h": "c"
+  }
+}

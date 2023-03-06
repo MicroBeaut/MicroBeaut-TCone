@@ -1,0 +1,46 @@
+#######################################
+# Syntax Coloring Map For TCone
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+TConeTask               KEYWORD1
+TConeTimer              KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+TaskPointer     KEYWORD2
+taskRun         KEYWORD2
+MS2OCR          KEYWORD2
+attachTask      KEYWORD2
+setScanTime     KEYWORD2
+begin           KEYWORD2
+getScanTime     KEYWORD2
+countTask       KEYWORD2
+timerMonitor    KEYWORD2
+timerEnable     KEYWORD2
+timerStart      KEYWORD2
+timerStop       KEYWORD2
+timerType       KEYWORD2
+timerDelay      KEYWORD2
+getOutput       KEYWORD2
+isDone          KEYWORD2
+getTimerCount   KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+MIN_CLOCK_SELECT        LITERAL1
+MAX_CLOCK_SELECT        LITERAL1
+DEFAULT_CLOCK_SELECT    LITERAL1
+TCONE_MIN_SCAN_TIME     LITERAL1
+TCONE_MAX_SCAN_TIME     LITERAL1
+TCONE_MIN_DELAY_TIME    LITERAL1
+TCONE_MAX_DELAY_TIME    LITERAL1
+TCONE_MAX_TIMER         LITERAL1
+TCONE_MAX_TASK          LITERAL1
+TCONE_DEFAULT_SCANTIME  LITERAL1
+prescalerDivider        LITERAL1
+timerFrequency          LITERAL1
