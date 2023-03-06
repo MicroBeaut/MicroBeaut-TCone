@@ -1,4 +1,0 @@
-{
-    "board": "arduino:avr:unowifi",
-    "sketch": "examples\\TCone_TaskAndTimer\\TCone_TaskAndTimer.ino"
-}
