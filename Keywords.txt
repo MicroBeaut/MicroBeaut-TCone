@@ -44,3 +44,5 @@ TCONE_MAX_TASK          LITERAL1
 TCONE_DEFAULT_SCANTIME  LITERAL1
 prescalerDivider        LITERAL1
 timerFrequency          LITERAL1
+TON                     LITERAL1
+TOF                     LITERAL1

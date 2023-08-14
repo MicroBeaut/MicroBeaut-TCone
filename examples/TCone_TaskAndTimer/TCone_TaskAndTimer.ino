@@ -21,8 +21,8 @@ void inputTask();                           // Delclare subroutine
 void outputTask();                          // Delclare subroutine
 
 const TaskPointer taskPointer[] = {inputTask, outputTask};    // Pointer Array of subroutine
-const TimerTypes timerType[] = {timerON, timerOFF, timerON};  // Timer Type Array
-const TimerTypes timerDelay[] = {1000, 2000, 3000};           // Timer delay
+const TimerTypes timerType[] = {TON, TOF, TON};               // Timer Type Array
+const uint16_t timerDelay[] = {1000, 2000, 3000};             // Timer delay
 
 void setup() {
   Task.setScanTime(20);                                       // Set scan time or Timer interrupt. Interval 20 milliseconds

@@ -17,8 +17,8 @@
 #if defined(ARDUINO_ARCH_AVR)
 
 enum TimerTypes {
-  timerON = 0,
-  timerOFF = 1
+  TON = 0,
+  TOF = 1
 };
 
 typedef struct {
@@ -28,7 +28,7 @@ typedef struct {
   unsigned char done: 1;
   uint16_t elapsedTime = 0;
   uint16_t timeDelay = 1000;  // Default 1000 milliseconds
-  TimerTypes type = timerON;
+  TimerTypes type = TON;
 } TimerObject;
 
 
@@ -39,15 +39,15 @@ const uint8_t MIN_CLOCK_SELECT = 0;     // Minimum Clock Select Mode
 const uint8_t MAX_CLOCK_SELECT = 6;     // Maximum Clock Select Mode
 const uint8_t DEFAULT_CLOCK_SELECT = 5; // Default Clock Select Mode
 
-const uint16_t TCONE_MIN_SCAN_TIME = 20;  // 20   milliseconds
+const uint16_t TCONE_MIN_SCAN_TIME = 10;  // 10   milliseconds
 const uint16_t TCONE_MAX_SCAN_TIME = 250; // 250  milliseconds
 
-const uint16_t TCONE_MIN_DELAY_TIME = 20;     // 20    milliseconds
+const uint16_t TCONE_MIN_DELAY_TIME = 10;     // 10    milliseconds
 const uint16_t TCONE_MAX_DELAY_TIME = 60000;  // 60000 milliseconds = 60 second
 
 const uint8_t TCONE_MAX_TIMER  = 12;
 const uint8_t TCONE_MAX_TASK  = 12;
-const uint16_t TCONE_DEFAULT_SCANTIME = 20;
+const uint16_t TCONE_DEFAULT_SCANTIME = 10;
 
 typedef void (*TaskPointer)(void);
 
@@ -88,9 +88,10 @@ class TConeTask {
     volatile TaskPointer _taskPointer[TCONE_MAX_TASK];
     volatile uint8_t _taskCount = 0;
     volatile uint16_t _scanTime = 0;
-
+#endif // ARDUINO_ARCH_AVR
   public:
     TConeTask();
+#if defined(ARDUINO_ARCH_AVR)
     void taskRun();
     void attachTask(TaskPointer taskName);
     void setScanTime(uint16_t setScanTime);
@@ -113,9 +114,10 @@ class TConeTimer {
     void internalSetTimer(bool start, uint16_t elapsedTimer, bool output, bool done, uint8_t index);
     void internalTimerMonitor(uint8_t index);
     void internalStartStop(bool start, uint8_t index);
-
+#endif // ARDUINO_ARCH_AVR
   public:
     TConeTimer();
+#if defined(ARDUINO_ARCH_AVR)
     void timerMonitor();
     void timerEnable(bool enable, uint8_t index);
     void timerStart(uint8_t index);

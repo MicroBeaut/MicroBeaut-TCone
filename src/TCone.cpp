@@ -36,10 +36,11 @@ void TConeTask::setScanTime(uint16_t scanTime) {
 }
 
 void TConeTask::begin() {
-  TCCR1A = (1 << COM1A0);
+  TCCR1A = 0;
   TCCR1B = 0;
-  OCR1A = MS2OCR( _scanTime);
+  TCCR1A = (1 << COM1A0);
   TCCR1B = (1 << WGM12) | (1 << CS12) | (1 << CS10);
+  OCR1A = MS2OCR( _scanTime);
   TIMSK1 |= (1 << OCIE1A);
 }
 
@@ -102,21 +103,21 @@ void TConeTimer::timerDelay(uint16_t timeDelay, uint8_t index) {
 void TConeTimer::timerStart(uint8_t index) {
   if (index >= _timerCount) return;
   if (!_timer[index].enable) return;
-  bool output = _timer[index].type == timerON ? false : true;
+  bool output = _timer[index].type == TON ? false : true;
   this->internalSetTimer(true, 0, output, false, index);
 }
 
 void TConeTimer::timerStop(uint8_t index) {
   if (index >= _timerCount) return;
   if (!_timer[index].enable) return;
-  bool output = _timer[index].type == timerON ? false : true;
+  bool output = _timer[index].type == TON ? false : true;
   this->internalSetTimer(false, 0, output, false, index);
 }
 
 void TConeTimer::internalStartStop(bool start, uint8_t index) {
   if (index >= _timerCount) return;
   if (!_timer[index].enable) return;
-  bool output = _timer[index].type == timerON ? false : true;
+  bool output = _timer[index].type == TON ? false : true;
   this->internalSetTimer(start, 0, output, false, index);
 }
 
@@ -134,7 +135,7 @@ void TConeTimer::timerEnable(bool enable, uint8_t index) {
 
 void TConeTimer::internalTimerDone(uint8_t index) {
   if (!_timer[index].enable) return;
-  bool output = _timer[index].type == timerON ? true : false;
+  bool output = _timer[index].type == TON ? true : false;
   this->internalSetTimer(true, 0, output, true, index);
 }
 
